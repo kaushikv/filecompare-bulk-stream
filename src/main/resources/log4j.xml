@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<log4j:configuration debug="true" xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Threshold" value="debug"/>
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [%.40t] %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="logFile" class="org.apache.log4j.FileAppender">
+        <param name="File" value="flink-app.log"/>
+        <param name="Append" value="false"/>
+        <param name="threshold" value="debug"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [%.40t] %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="org.apache.flink">
+        <level value="warn" />
+    </logger>
+
+    <root>
+        <priority value="info"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="logFile"/>
+    </root>
+
+</log4j:configuration>
